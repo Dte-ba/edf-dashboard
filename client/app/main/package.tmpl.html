@@ -1,0 +1,44 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{item.area}} - {{item.axis}} <span ng-hide="item.block === 'Sin Especificar'">- {{item.block}}</span> - {{item.title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="fa-times" class="fa"></md-icon>   
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+
+      <div class="md-dialog-content" layout="row" layout-sm="column" layout-padding>
+        <div flex>
+          <img style="margin: auto; max-width: 100%;" alt="Lush mango tree" ng-src="{{item.cover}}">
+        </div>
+        <div flex layout="column">
+          <div flex>
+            <h3><i class="fa fa-info-circle"></i> Ficha Técnica</h3>
+            <p>{{item.content}}</p>
+            <md-divider></md-divider>
+          </div>
+          <div flex layout="column">
+            <span flex></span>
+            <md-button class="md-raised md-primary" target="_blank"
+                       ng-href="/epm/content/{{repo}}/{{item.uid}}">Acceder al Material</md-button> 
+          </div>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <div><i class="fa fa-tag fa-2x"></i></div>
+      <div flex>
+        <ul class="tangible-tags">
+          <li ng-repeat="tag in item.tags">
+            <a ui-sref="main({ buscar: tag })">{{tag}}</a>
+          </li>
+        </ul>
+      </div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

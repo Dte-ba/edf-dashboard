@@ -1,0 +1,60 @@
+<!--<p style="margin-left: 20px">Cantidad de paquetes {{vm.packages.length}}</p>-->
+<div layout="column" flex layout-fill >
+  <md-progress-circular md-mode="indeterminate" ng-show="vm.working"></md-progress-circular>
+  
+  <md-content layout-padding
+              layout="row"
+              layout-align="center top"
+              class="content package">
+
+      <div flex layout="column" ng-repeat="rows in vm.columns">
+        <md-card ng-repeat="item in rows" class="card-package">
+          <!--<md-card-header>
+              <md-card-header-text>
+                <span class="md-title"><small>{{item.title}}</small></span>
+                <span class="md-title">{{item.block}}</span>
+                <span class="md-subhead">{{item.area}} - {{item.axis}}</span>
+              </md-card-header-text>
+          </md-card-header>-->
+          <md-divider></md-divider>
+          <img ng-src="{{item.front}}" class="md-card-image" alt="Cover">
+          <div layout="row" class="button-under-image">
+            <span flex></span>
+            <md-button class="md-raised md-primary bg-area" aria-label="" ng-click="vm.show($event, item)"
+                       target-area="{{item.area}}">
+              <md-tooltip md-direction="top">Abrir</md-tooltip>
+              Abrir 
+            </md-button>
+          </div>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{item.title}}</span>
+              <div layout="column" class="card-categories">
+                <div class="title-area">
+                  <a ui-sref="main({ buscar: item.area })" class="link-nodecorate">{{item.area}}</a>
+                </div>
+                <div layout="row">
+                  <div class="title-chevron"><i class="fa fa-angle-right fa-2x"></i></div>
+                  <div flex>
+                    <div class="title-axis">
+                      <a ui-sref="main({ buscar: item.axis })" class="link-nodecorate">{{item.axis}}</a>
+                      </div>
+                    <div class="title-block" ng-if="item.block !== 'Sin Especificar'">
+                      <a ui-sref="main({ buscar: item.block })" class="link-nodecorate">{{item.block}}
+                      </a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+          </md-card-content>
+          <!--<md-card-actions layout="row" layout-align="end center">
+            
+          </md-card-actions>-->
+        </md-card>
+      </div>
+    
+  </md-content>
+</div>

@@ -1,0 +1,35 @@
+<md-toolbar id="top-toolbar" class="md-toolbar-tools md-menu-toolbar" md-scroll-shrink md-whiteframe="1">
+  <div layout="row" ng-hide="$ctrl.hasSelected">
+    <!--<md-button class="menu md-icon-button " ng-click="$ctrl.toggleSidenav()"
+               aria-label="{{_ariaLabel}}">
+      <i class="fa fa-navicon abc-green"></i>
+    </md-button>-->
+    <div class="brand-logo"><object data="assets/images/logo-ef.svg" type="image/svg+xml"></object></div>
+  </div>
+  <form flex ng-hide="$ctrl.hasSelected" ng-submit="$event.preventDefault()" class="search-form">
+    <md-autocomplete
+        ng-disabled="$ctrl.isDisabled"
+        md-no-cache="$ctrl.noCache"
+        md-selected-item="$ctrl.selectedItem"
+        md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+        md-search-text="$ctrl.searchText"
+        md-selected-item-change="$ctrl.selectedItemChange(item)"
+        md-items="item in $ctrl.querySearch($ctrl.searchText)"
+        md-item-text="item.value"
+        md-min-length="0"
+        placeholder="Filtrar"
+        md-menu-class="autocomplete-custom-template",
+        ng-model-options="{ 'debounce': 300 }"
+        >
+      <md-item-template>
+        <span class="item-title">
+          <i class="fa" ng-class="item.icon"></i>
+          <span ng-bind-html="item.caption"> </span>
+        </span>
+      </md-item-template>
+    </md-autocomplete>
+  </form>
+  <div>
+    <div class="brand-logo"><object data="assets/images/logo-ba.svg" type="image/svg+xml"></object></div>
+  </div>
+</md-toolbar>
